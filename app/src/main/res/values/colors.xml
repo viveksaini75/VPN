@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2196f3</color>
+    <color name="colorPrimaryDark">#1d34da</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="rightNav">#032e63</color>
+
+
+    <color name="backgroundColor">#039be5</color>
+    <color name="textSup">#696969</color>
+    <color name="textSub">#696B7C</color>
+    <color name="textLink">#1cbfff</color>
+    <color name="textHigh">#fef294</color>
+    <color name="iconNormal">#9193a8</color>
+    <color name="iconDown">#6afff3</color>
+    <color name="iconUp">#bf71ff</color>
+
+
+    <color name="colorLightPrimary">#206AFF</color> //303030 0b0c1b 38C0F8
+    <color name="colorSecondary">#E9E9E9</color> //9193a8 CECECE
+    <color name="colorBackground">#ffffff</color>
+
+
+    <color name="colorSelectItem">#447FFF</color> //303030 0b0c1b 38C0F8
+    <color name="colorBubble">#3676FF</color> //303030 0b0c1b 38C0F8
+    <color name="colorConnecting">#3676FF</color> //303030 0b0c1b 38C0F8
+    <color name="colorConnectingLight">#4E86FF</color> //303030 0b0c1b 38C0F8
+    <color name="colorDisconnect">#FF2525</color> //303030 0b0c1b 039be5
+    <color name="colorDisconnectLight">#FF4040</color> //303030 0b0c1b 38C0F8
+
+    <color name="colorText">#000000</color>
+
+    <color name="colorStatsBlue">#4E86FF</color> //303030 0b0c1b 38C0F8
+    <color name="colorStatsGray">#818181</color> //303030 0b0c1b 38C0F8
+
+    <color name="colorTextStats">#FFFFFF</color>
+
+    <color name="colorLightBackground">#FFFFFF</color>
+    <color name="colorDarkBackground">#303030</color>
+
+    <color name="colorDarkText">#FFFFFF</color>
+    <color name="colorLightText">#303030</color>
+
+    <color name="colorDarkList">#606060</color>
+    <color name="colorLightList">#dfdfdf</color>
+
+    <color name="colorSample">#B0E4FC</color>
+    <color name="colorSample2">#005275</color>
+    <color name="colorSampleGreen">#CDFCB0</color>
+    <color name="colorSampleGreen2">#2D7500</color>
+
+    <color name="colorRed">#EE7673</color>
+    <color name="colorGreen">#0BA800</color>
+    <!-- <color name="colorBlue">#42A5F5</color> -->
+    <color name="colorYellow">#FFD25E</color>
+
+    <color name="colorLightRed">#F08B89</color>
+    <color name="colorLightGreen">#82C286</color>
+    <!-- <color name="colorLightBlue">#5FADEC</color> -->
+    <color name="colorLightYellow">#FDD688</color>
+
+    <color name="colorBlue">#002AA8</color>
+    <color name="colorBlueLight">#292A3A</color>
+    <color name="colorBlueDark">#009AAF</color>
+
+
+
+
+    <color name="colorTextPrimary">#303030</color>
+    <color name="teal_700">#FF018786</color>
+
+
+</resources>

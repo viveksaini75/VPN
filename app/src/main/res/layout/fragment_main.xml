@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingBottom="5dp">
+
+
+
+        <LinearLayout
+            android:layout_marginLeft="20dp"
+            android:id="@+id/connectionStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="@dimen/lo_20dpGrid"
+            android:layout_marginRight="@dimen/lo_20dpGrid">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Connection Status"
+                android:textColor="@color/colorWhite"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Country: "
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/lastPacketReceiveTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Packet Received:"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/byteInTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Bytes In: "
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/byteOutTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Bytes OUT: "
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp" />
+
+
+
+            <!--  <ImageView
+                  android:layout_width="40dp"
+                  android:layout_height="40dp"
+                  android:layout_gravity="center"
+                  android:layout_marginTop="50dp"
+                  android:id="@+id/selectedServerIcon"
+                  android:layout_marginEnd="20dp"
+                  android:src="@drawable/usa_flag"
+                  android:layout_marginRight="20dp" />-->
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_text_bubble"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/connectionStatus"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/lo_16dpGrid"
+                android:layout_marginEnd="@dimen/lo_16dpGrid"
+                android:background="@drawable/rectangle"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/lo_16dpGrid">
+
+                <TextView
+                    android:id="@+id/connection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:text="The connection is ready."
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    />
+
+                <TextView
+                    android:id="@+id/logTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:text="Tap CONNECT to start :)"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/triangle"
+                    android:rotation="180" />
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lText"
+                    android:layout_marginTop="@dimen/lo_20dpGrid"
+                    android:layout_below="@id/ll_text_bubble"
+                    android:orientation="vertical">
+
+                   &lt;!&ndash; <TextView
+                        android:id="@+id/logTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/colorWhite" />&ndash;&gt;
+                </LinearLayout>
+        -->
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/la_animation"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:layout_below="@id/ll_text_bubble"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/lo_20dpGrid"
+            />
+
+        <Button
+            android:id="@+id/vpnBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/la_animation"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/button_connect"
+            android:elevation="@dimen/lo_8dpGrid"
+            android:paddingStart="@dimen/lo_24dpGrid"
+            android:paddingEnd="@dimen/lo_24dpGrid"
+            android:text="Connect"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/ts_H6"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+</layout>
