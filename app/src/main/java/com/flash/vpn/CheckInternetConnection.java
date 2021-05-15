@@ -1,4 +1,4 @@
-package com.lazycoder.vpn;
+package com.flash.vpn;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

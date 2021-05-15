@@ -1,4 +1,4 @@
-package com.lazycoder.vpn.adapter;
+package com.flash.vpn.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,9 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.lazycoder.vpn.R;
-import com.lazycoder.vpn.interfaces.NavItemClickListener;
-import com.lazycoder.vpn.model.Server;
+import com.flash.vpn.R;
+import com.flash.vpn.interfaces.NavItemClickListener;
+import com.flash.vpn.model.Server;
+
 
 import java.util.ArrayList;
 
@@ -22,12 +23,14 @@ public class ServerListRVAdapter extends RecyclerView.Adapter<ServerListRVAdapte
 
     private ArrayList<Server> serverLists;
     private Context mContext;
+  //  private OnItemClickListener listener;
     private NavItemClickListener listener;
 
     public ServerListRVAdapter(ArrayList<Server> serverLists, Context context) {
         this.serverLists = serverLists;
         this.mContext = context;
-        listener = (NavItemClickListener) context;
+       // this.listener = (OnItemClickListener)context;
+        this.listener = (NavItemClickListener)context;
     }
 
     @NonNull
@@ -48,7 +51,9 @@ public class ServerListRVAdapter extends RecyclerView.Adapter<ServerListRVAdapte
         holder.serverItemLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //listener.onItemClick(position);
                 listener.clickedItem(position);
+
             }
         });
     }
@@ -70,5 +75,9 @@ public class ServerListRVAdapter extends RecyclerView.Adapter<ServerListRVAdapte
             serverIcon = itemView.findViewById(R.id.iconImg);
             serverCountry = itemView.findViewById(R.id.countryTv);
         }
+
     }
-}
+
+    public interface OnItemClickListener {
+        void onItemClick(int index);
+    }}

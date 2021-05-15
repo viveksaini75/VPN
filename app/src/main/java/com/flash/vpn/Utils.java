@@ -1,6 +1,8 @@
-package com.lazycoder.vpn;
+package com.flash.vpn;
 
 import android.net.Uri;
+
+
 
 public class Utils {
 

@@ -1,11 +1,13 @@
-package com.lazycoder.vpn;
+package com.flash.vpn;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.lazycoder.vpn.model.Server;
+import com.flash.vpn.model.Server;
 
-import static com.lazycoder.vpn.Utils.getImgURL;
+
+import static com.flash.vpn.Utils.getImgURL;
+
 
 public class SharedPreference {
 

@@ -1,4 +1,4 @@
-package com.lazycoder.vpn.model;
+package com.flash.vpn.model;
 
 public class Server {
     private String country;

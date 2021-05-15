@@ -1,4 +1,4 @@
-package com.flash.vpn.view;
+package com.flash.vpn.activity;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,15 +14,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.lazycoder.vpn.R;
-import com.lazycoder.vpn.adapter.ServerListRVAdapter;
-import com.lazycoder.vpn.interfaces.ChangeServer;
-import com.lazycoder.vpn.interfaces.NavItemClickListener;
-import com.lazycoder.vpn.model.Server;
+import com.flash.vpn.R;
+import com.flash.vpn.Utils;
+import com.flash.vpn.adapter.ServerListRVAdapter;
+import com.flash.vpn.interfaces.ChangeServer;
+import com.flash.vpn.interfaces.NavItemClickListener;
+import com.flash.vpn.model.Server;
 
 import java.util.ArrayList;
 
-import com.lazycoder.vpn.Utils;
+
 
 
 public class MainActivity extends AppCompatActivity implements NavItemClickListener {
