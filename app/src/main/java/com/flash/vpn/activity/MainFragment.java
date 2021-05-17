@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.VpnService;
 import android.os.Bundle;
 import android.os.RemoteException;
@@ -21,6 +22,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.bumptech.glide.Glide;
 import com.flash.vpn.CheckInternetConnection;
+import com.flash.vpn.EncryptData;
 import com.flash.vpn.R;
 import com.flash.vpn.SharedPreference;
 import com.flash.vpn.databinding.FragmentMainBinding;
@@ -28,9 +30,11 @@ import com.flash.vpn.interfaces.ChangeServer;
 import com.flash.vpn.model.Server;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 
 import de.blinkt.openvpn.OpenVpnApi;
 import de.blinkt.openvpn.core.OpenVPNService;
@@ -39,7 +43,7 @@ import de.blinkt.openvpn.core.VpnStatus;
 
 import static android.app.Activity.RESULT_OK;
 
-public class MainFragment extends Fragment implements View.OnClickListener, ChangeServer {
+public class MainFragment extends Fragment implements View.OnClickListener {
 
     private Server server;
     private CheckInternetConnection connection;
@@ -50,7 +54,8 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
     private SharedPreference preference;
 
     private FragmentMainBinding binding;
-    private String countryName;
+    private InputStream inputStream;
+    private String serverFile = "NULL",country= "NULL",username = "NULL",password = "NULL";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,8 +77,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
         server = preference.getServer();
 
         // Update current selected server icon
-        updateCurrentServerIcon(server.getFlagUrl());
-        countryName = server.getCountry();
+        //updateCurrentServerIcon(server.getFlagUrl());
         connection = new CheckInternetConnection();
         binding.laAnimation.setAnimation(R.raw.ninjasecure);
         binding.laAnimation.playAnimation();
@@ -90,11 +94,10 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
         // Checking is vpn already running or not
         isServiceRunning();
         VpnStatus.initLogCache(getActivity().getCacheDir());
+
     }
 
-    /**
-     * @param v: click listener view
-     */
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -165,10 +168,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
     }
 
 
-    /**
-     * Stop vpn
-     * @return boolean: VPN status
-     */
+
     public boolean stopVpn() {
         try {
             vpnThread.stop();
@@ -219,8 +219,18 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
     private void startVpn() {
         try {
             // .ovpn file
-            InputStream conf = getActivity().getAssets().open(server.getOvpn());
-            InputStreamReader isr = new InputStreamReader(conf);
+
+            EncryptData En = new EncryptData();
+            SharedPreferences ConnectionDetails = getContext().getSharedPreferences("connection_data", 0);
+            country = ConnectionDetails.getString("country", "NA");
+            serverFile = En.decrypt(ConnectionDetails.getString("file", "NA"));
+            username = ConnectionDetails.getString("username", "NA");
+            password = ConnectionDetails.getString("password", "NA");
+
+            // InputStream conf = getActivity().getAssets().open(server.getOvpn());
+            inputStream = new ByteArrayInputStream(serverFile.getBytes(Charset.forName("UTF-8")));
+
+            InputStreamReader isr = new InputStreamReader(inputStream);
             BufferedReader br = new BufferedReader(isr);
             String config = "";
             String line;
@@ -232,7 +242,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
             }
 
             br.readLine();
-            OpenVpnApi.startVpn(getContext(), config, server.getCountry(), server.getOvpnUserName(), server.getOvpnUserPassword());
+            OpenVpnApi.startVpn(getContext(), config, country, username, password);
 
             // Update log
             binding.logTv.setText("Connecting...");
@@ -243,10 +253,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
         }
     }
 
-    /**
-     * Status change with corresponding vpn connection status
-     * @param connectionState
-     */
+
     public void setStatus(String connectionState) {
         if (connectionState != null)
             switch (connectionState) {
@@ -256,8 +263,8 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
                     vpnService.setDefaultStatus();
                     binding.logTv.setText("Tap CONNECT to start :)");
                     binding.connection.setText("The connection is ready.");
-                    binding.selectedServerIcon.setVisibility(View.GONE);
-                    binding.laAnimation.setVisibility(View.VISIBLE);
+                   // binding.selectedServerIcon.setVisibility(View.GONE);
+                  //  binding.laAnimation.setVisibility(View.VISIBLE);
                     binding.laAnimation.setAnimation(R.raw.ninjasecure);
                     binding.laAnimation.playAnimation();
 
@@ -266,28 +273,28 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
                     vpnStart = true;// it will use after restart this activity
                     status("connected");
                     binding.logTv.setText("Please enjoy a safer internet");
-                    binding.connection.setText("Connected " + countryName);
-                    binding.selectedServerIcon.setVisibility(View.VISIBLE);
+                    binding.connection.setText("Connected " + country);
+                   // binding.selectedServerIcon.setVisibility(View.VISIBLE);
                     binding.laAnimation.setAnimation(R.raw.connected);
                     binding.laAnimation.playAnimation();
                     break;
                 case "WAIT":
                     binding.logTv.setText("waiting for server connection!!");
-                    binding.connection.setText("Connecting " + countryName);
+                    binding.connection.setText("Connecting " + country);
                     binding.laAnimation.setAnimation(R.raw.boost);
                     binding.laAnimation.playAnimation();
 
                     break;
                 case "AUTH":
                     binding.logTv.setText("server authenticating!!");
-                    binding.connection.setText("Connecting " + countryName);
+                    binding.connection.setText("Connecting " + country);
                     binding.laAnimation.setAnimation(R.raw.boost);
                     binding.laAnimation.playAnimation();
                     break;
                 case "RECONNECTING":
                     status("connecting");
                     binding.logTv.setText("Reconnecting...");
-                    binding.connection.setText("Connecting " + countryName);
+                    binding.connection.setText("Connecting " + country);
                     binding.laAnimation.setAnimation(R.raw.boost);
                     binding.laAnimation.playAnimation();
                     break;
@@ -308,7 +315,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
             binding.vpnBtn.setText(getContext().getString(R.string.connect));
         } else if (status.equals("connecting")) {
             binding.vpnBtn.setText(getContext().getString(R.string.connecting));
-            binding.connection.setText("Connecting " + countryName);
+            binding.connection.setText("Connecting " + country);
             binding.laAnimation.setAnimation(R.raw.boost);
             binding.laAnimation.playAnimation();
         } else if (status.equals("connected")) {
@@ -385,21 +392,15 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
-    /**
-     * VPN server country icon change
-     * @param serverIcon: icon URL
-     */
-    public void updateCurrentServerIcon(String serverIcon) {
+
+    /*public void updateCurrentServerIcon(String serverIcon) {
         Glide.with(getContext())
                 .load(serverIcon)
                 .into(binding.selectedServerIcon);
-    }
+    }*/
 
-    /**
-     * Change server when user select new server
-     * @param server ovpn server details
-     */
-    @Override
+
+   /* @Override
     public void newServer(Server server) {
         this.server = server;
         updateCurrentServerIcon(server.getFlagUrl());
@@ -412,15 +413,11 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
 
         prepareVpn();
     }
-
+*/
     @Override
     public void onResume() {
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter("connectionState"));
 
-        if (server == null) {
-            server = preference.getServer();
-        }
-        countryName = preference.getServer().getCountry();
         super.onResume();
     }
 
@@ -430,15 +427,12 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
         super.onPause();
     }
 
-    /**
-     * Save current selected server on local shared preference
-     */
+
     @Override
     public void onStop() {
         if (server != null) {
             preference.saveServer(server);
         }
-
         super.onStop();
     }
 }

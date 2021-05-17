@@ -47,5 +47,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
     implementation project(path: ':vpnLib')
     implementation 'com.airbnb.android:lottie:3.0.7'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.android.volley:volley:1.2.0'
+
 
 }

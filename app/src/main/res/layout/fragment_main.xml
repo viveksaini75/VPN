@@ -145,13 +145,14 @@
             android:id="@+id/la_animation"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:layout_below="@id/selectedServerIcon"
             android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
             android:layout_marginTop="50dp"
+            android:layout_below="@id/ll_text_bubble"
             app:lottie_autoPlay="true"
             app:lottie_loop="true" />
 
-        <ImageView
+       <!-- <ImageView
             android:id="@+id/selectedServerIcon"
             android:layout_width="70dp"
             android:layout_height="70dp"
@@ -160,7 +161,7 @@
             android:layout_below="@+id/ll_text_bubble"
             android:layout_centerInParent="true"
             android:visibility="gone"/>
-
+-->
        <!-- <Button
             android:id="@+id/browser"
             android:layout_width="wrap_content"
