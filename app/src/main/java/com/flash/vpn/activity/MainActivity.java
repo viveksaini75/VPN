@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
             case "Russia":
                 serverImage.setImageResource(R.drawable.ic_flag_russia);
                 break;
-            case "southkorea":
+            case "South Korea":
                 serverImage.setImageResource(R.drawable.ic_flag_south_korea);
                 break;
             case "India":
@@ -134,16 +134,22 @@ public class MainActivity extends AppCompatActivity {
             case "Thailand":
                 serverImage.setImageResource(R.drawable.ic_flag_thailand);
                 break;
-            case "vietnam":
+            case "Viet Nam":
                 serverImage.setImageResource(R.drawable.ic_flag_vietnam);
                 break;
-            case "unitedstates":
+            case "United States":
                 serverImage.setImageResource(R.drawable.ic_flag_united_states);
                 break;
             case "unitedkingdom":
                 serverImage.setImageResource(R.drawable.ic_flag_united_kingdom);
                 break;
-            case "singapore":
+            case "Brazil":
+                serverImage.setImageResource(R.drawable.ic_flag_brazil);
+                break;
+            case "China":
+                serverImage.setImageResource(R.drawable.ic_china);
+                break;
+            case "Singapore":
                 serverImage.setImageResource(R.drawable.ic_flag_singapore);
                 break;
             case "france":
@@ -152,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
             case "germany":
                 serverImage.setImageResource(R.drawable.ic_flag_germany);
                 break;
-            case "canada":
+            case "Canada":
                 serverImage.setImageResource(R.drawable.ic_flag_canada);
                 break;
             case "luxemburg":
