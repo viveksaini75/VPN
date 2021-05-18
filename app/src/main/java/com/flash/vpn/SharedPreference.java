@@ -42,10 +42,7 @@ public class SharedPreference {
         mPrefEditor.commit();
     }
 
-    /**
-     * Get server data from shared preference
-     * @return server model object
-     */
+
     public Server getServer() {
 
         Server server = new Server(

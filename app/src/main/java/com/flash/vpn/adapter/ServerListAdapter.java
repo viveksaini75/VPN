@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.flash.vpn.EncryptData;
 import com.flash.vpn.R;
+import com.flash.vpn.interfaces.OnItemClickListener;
 import com.flash.vpn.model.Server;
 
 import java.util.ArrayList;
@@ -26,6 +29,7 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.My
     private OnItemClickListener listener;
     private Server server;
     private SharedPreferences SharedAppDetails;
+    private int lastPosition = -1;
 
     public ServerListAdapter(ArrayList<Server> serverList, Server server, Context context) {
         this.serverList = serverList;
@@ -102,6 +106,7 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.My
                 break;
 
         }
+        setAnimation(holder.itemView, position);
 
         holder.serverItemLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +122,15 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.My
 
     }
 
+    private void setAnimation(View viewToAnimate, int position)
+    {
+        if (position > lastPosition)
+        {
+            Animation animation = AnimationUtils.loadAnimation(mContext, android.R.anim.slide_in_left);
+            viewToAnimate.startAnimation(animation);
+            lastPosition = position;
+        }
+    }
 
     @Override
     public int getItemCount() {
@@ -139,11 +153,6 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.My
 
     }
 
-
-    public interface OnItemClickListener {
-        void onItemClick(int position);
-
-    }
 }
 
 

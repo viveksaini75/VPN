@@ -22,7 +22,6 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true">
 
-        <include layout="@layout/layout_right_navigation" />
 
     </com.google.android.material.navigation.NavigationView>
 

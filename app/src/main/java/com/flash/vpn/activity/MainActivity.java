@@ -9,41 +9,16 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.flash.vpn.Data;
-import com.flash.vpn.EncryptData;
 import com.flash.vpn.R;
-import com.flash.vpn.Utils;
-import com.flash.vpn.adapter.ServerListRVAdapter;
-import com.flash.vpn.interfaces.ChangeServer;
-import com.flash.vpn.interfaces.NavItemClickListener;
-import com.flash.vpn.model.Server;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -161,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
             case "Canada":
                 serverImage.setImageResource(R.drawable.ic_flag_canada);
                 break;
-            case "luxemburg":
+            case "Luxemburg":
                 serverImage.setImageResource(R.drawable.ic_flag_luxemburg);
                 break;
             case "netherlands":

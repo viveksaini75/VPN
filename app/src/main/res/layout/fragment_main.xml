@@ -26,7 +26,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/lo_10dpGrid"
-
                 android:orientation="vertical">
 
 
@@ -36,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="Duration: 00:00:00"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
                 <!--<TextView
@@ -54,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="Download: ↓0kB/s"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
                 <TextView
@@ -63,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="Upload: ↑0kB/s"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
 

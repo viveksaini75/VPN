@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.VpnService;
 import android.os.Bundle;
 import android.os.RemoteException;
@@ -40,6 +41,7 @@ import de.blinkt.openvpn.OpenVpnApi;
 import de.blinkt.openvpn.core.OpenVPNService;
 import de.blinkt.openvpn.core.OpenVPNThread;
 import de.blinkt.openvpn.core.VpnStatus;
+import ir.amirrajabzadeh.rayanalert.RayanAlert;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -55,7 +57,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     private FragmentMainBinding binding;
     private InputStream inputStream;
-    private String serverFile = "NULL",country= "NULL",username = "NULL",password = "NULL";
+    private String serverFile = "NULL", country = "NULL", username = "NULL", password = "NULL";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -89,7 +91,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
 
         binding.vpnBtn.setOnClickListener(this);
-       // binding.browser.setOnClickListener(this);
+        // binding.browser.setOnClickListener(this);
 
         // Checking is vpn already running or not
         isServiceRunning();
@@ -105,7 +107,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                 // Vpn is running, user would like to disconnect current connection.
                 if (vpnStart) {
                     confirmDisconnect();
-                }else {
+                } else {
                     prepareVpn();
                 }
                 break;
@@ -117,29 +119,26 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     /**
      * Show show disconnect confirm dialog
      */
-    public void confirmDisconnect(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage(getActivity().getString(R.string.connection_close_confirm));
-
-        builder.setPositiveButton(getActivity().getString(R.string.yes), new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                stopVpn();
-            }
-        });
-        builder.setNegativeButton(getActivity().getString(R.string.no), new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // User cancelled the dialog
-            }
-        });
-
-        // Create the AlertDialog
-        AlertDialog dialog = builder.create();
-        dialog.show();
+    public void confirmDisconnect() {
+        RayanAlert alert = new RayanAlert(getContext());
+        alert.setTitle("Disconnect")
+                .setMessage("Would you like to cancel the current VPN Connection?")
+                .setTextNegativeButton("No")
+                .setTextPositiveButton("Yes")
+                .setFocusBackgroundColorNegativeButton(Color.GREEN)
+                .setBorderColorNegativeButton(Color.LTGRAY)
+                .setBorderWidthNegativeButton(5)
+                .setTextColorNegativeButton(Color.BLACK)
+                .setTextColorPositiveButton(Color.BLACK)
+                .showLoading(false)
+                .show(new RayanAlert.OnClickListener() {
+                    @Override
+                    public void onPositiveButtonClick() {
+                        stopVpn();
+                    }
+                });
     }
 
-    /**
-     * Prepare for vpn connect with required permission
-     */
     private void prepareVpn() {
         if (!vpnStart) {
             if (getInternetStatus()) {
@@ -166,7 +165,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             showToast("Disconnect Successfully");
         }
     }
-
 
 
     public boolean stopVpn() {
@@ -263,8 +261,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                     vpnService.setDefaultStatus();
                     binding.logTv.setText("Tap CONNECT to start :)");
                     binding.connection.setText("The connection is ready.");
-                   // binding.selectedServerIcon.setVisibility(View.GONE);
-                  //  binding.laAnimation.setVisibility(View.VISIBLE);
                     binding.laAnimation.setAnimation(R.raw.ninjasecure);
                     binding.laAnimation.playAnimation();
 
@@ -274,8 +270,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                     status("connected");
                     binding.logTv.setText("Please enjoy a safer internet");
                     binding.connection.setText("Connected " + country);
-                   // binding.selectedServerIcon.setVisibility(View.VISIBLE);
-                    binding.laAnimation.setAnimation(R.raw.connected);
+                    binding.laAnimation.setAnimation(R.raw.ninjasecure);
                     binding.laAnimation.playAnimation();
                     break;
                 case "WAIT":
@@ -308,7 +303,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     }
 
 
-
     public void status(String status) {
 
         if (status.equals("connect")) {
@@ -319,7 +313,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             binding.laAnimation.setAnimation(R.raw.boost);
             binding.laAnimation.playAnimation();
         } else if (status.equals("connected")) {
-
             binding.vpnBtn.setText(getContext().getString(R.string.disconnect));
 
         } else if (status.equals("tryDifferentServer")) {
@@ -370,24 +363,15 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         }
     };
 
-    /**
-     * Update status UI
-     * @param duration: running time
-     * @param lastPacketReceive: last packet receive time
-     * @param byteIn: incoming data
-     * @param byteOut: outgoing data
-     */
+
     public void updateConnectionStatus(String duration, String lastPacketReceive, String byteIn, String byteOut) {
         binding.durationTv.setText("Duration: " + duration);
-       // binding.lastPacketReceiveTv.setText("Packet Received: " + lastPacketReceive + " second ago");
+        // binding.lastPacketReceiveTv.setText("Packet Received: " + lastPacketReceive + " second ago");
         binding.byteInTv.setText("Download: " + byteIn);
         binding.byteOutTv.setText("Upload: " + byteOut);
     }
 
-    /**
-     * Show toast message
-     * @param message: toast message
-     */
+
     public void showToast(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
@@ -400,24 +384,23 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     }*/
 
 
-   /* @Override
-    public void newServer(Server server) {
-        this.server = server;
-        updateCurrentServerIcon(server.getFlagUrl());
-        countryName = server.getCountry();
+    /* @Override
+     public void newServer(Server server) {
+         this.server = server;
+         updateCurrentServerIcon(server.getFlagUrl());
+         countryName = server.getCountry();
 
-        // Stop previous connection
-        if (vpnStart) {
-            stopVpn();
-        }
+         // Stop previous connection
+         if (vpnStart) {
+             stopVpn();
+         }
 
-        prepareVpn();
-    }
-*/
+         prepareVpn();
+     }
+ */
     @Override
     public void onResume() {
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter("connectionState"));
-
         super.onResume();
     }
 
