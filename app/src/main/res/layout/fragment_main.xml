@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             app:cardCornerRadius="@dimen/lo_8dpGrid"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
@@ -146,8 +146,6 @@
             android:layout_height="200dp"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
-            android:layout_marginTop="50dp"
-            android:layout_below="@id/ll_text_bubble"
             app:lottie_autoPlay="true"
             app:lottie_loop="true" />
 
@@ -225,7 +223,7 @@
             android:textSize="@dimen/ts_H6"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="70dp"/>
+            android:layout_marginBottom="30dp"/>
 
     </RelativeLayout>
 </layout>

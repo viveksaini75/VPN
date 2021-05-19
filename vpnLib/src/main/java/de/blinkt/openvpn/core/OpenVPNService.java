@@ -6,6 +6,7 @@
 package de.blinkt.openvpn.core;
 
 import android.Manifest.permission;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Notification;
@@ -1283,18 +1284,18 @@ public class OpenVPNService extends VpnService implements StateListener, Callbac
     public void updateByteCount(long in, long out, long diffIn, long diffOut) {
         TotalTraffic.calcTraffic(this, in, out, diffIn, diffOut);
         if (mDisplayBytecount) {
-            String netstat = String.format(getString(R.string.statusline_bytecount),
-                    humanReadableByteCount(in, false, getResources()),
+            @SuppressLint("StringFormatMatches") String netstat = String.format(getString(R.string.statusline_bytecount),
+                    humanReadableByteCount(diffIn / OpenVPNManagement.mBytecountInterval, false, getResources()),
                     humanReadableByteCount(diffIn / OpenVPNManagement.mBytecountInterval, true, getResources()),
-                    humanReadableByteCount(out, false, getResources()),
+                    humanReadableByteCount(diffOut / OpenVPNManagement.mBytecountInterval, false, getResources()),
                     humanReadableByteCount(diffOut / OpenVPNManagement.mBytecountInterval, true, getResources()));
 
 
             showNotification(netstat, null, NOTIFICATION_CHANNEL_BG_ID, mConnecttime, LEVEL_CONNECTED, null);
             byteIn = String.format("↓%2$s", getString(R.string.statusline_bytecount),
-                    humanReadableByteCount(in,false, getResources())) /*+ " - " + humanReadableByteCount(diffIn / OpenVPNManagement.mBytecountInterval, false, getResources()) */+ "/s";
+                    humanReadableByteCount(diffIn / OpenVPNManagement.mBytecountInterval,false, getResources())) /*+ " - " + humanReadableByteCount(diffIn / OpenVPNManagement.mBytecountInterval, false, getResources()) */+ "/s";
             byteOut = String.format("↑%2$s", getString(R.string.statusline_bytecount),
-                    humanReadableByteCount(out, false,getResources()))/* + " - " + humanReadableByteCount(diffOut / OpenVPNManagement.mBytecountInterval, false, getResources())*/ + "/s";
+                    humanReadableByteCount(diffOut / OpenVPNManagement.mBytecountInterval, false,getResources()))/* + " - " + humanReadableByteCount(diffOut / OpenVPNManagement.mBytecountInterval, false, getResources())*/ + "/s";
             time = Calendar.getInstance().getTimeInMillis() - c;
             lastPacketReceive = Integer.parseInt(convertTwoDigit((int) (time / 1000) % 60)) - Integer.parseInt(seconds);
             seconds = convertTwoDigit((int) (time / 1000) % 60);
