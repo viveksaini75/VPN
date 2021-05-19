@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="ts_H5">24sp</dimen>
+    <dimen name="ts_H6">20sp</dimen>
+    <dimen name="ts_Subtitle1">16sp</dimen>
+    <dimen name="ts_Subtitle2">14sp</dimen>
+
+    <dimen name="ts_Body1">16sp</dimen>
+    <dimen name="ts_Body2">14sp</dimen>
+    <dimen name="ts_BUTTON">14sp</dimen>
+    <dimen name="ts_Caption">12sp</dimen>
+    <dimen name="ts_OVERLINE">10sp</dimen>
+
+
+
+    <dimen name="dimen_2dp">2dp</dimen>
+    <dimen name="dimen_4dp">4dp</dimen>
+    <dimen name="dimen_5dp">5dp</dimen>
+    <dimen name="dimen_6dp">6dp</dimen>
+    <dimen name="dimen_8dp">8dp</dimen>
+    <dimen name="dimen_10dp">10dp</dimen>
+    <dimen name="dimen_12dp">12dp</dimen>
+    <dimen name="dimen_14dp">14dp</dimen>
+    <dimen name="dimen_16dp">16dp</dimen>
+    <dimen name="dimen_20dp">20dp</dimen>
+    <dimen name="dimen_24dp">24dp</dimen>
+    <dimen name="dimen_30dp">30dp</dimen>
+    <dimen name="dimen_40dp">40dp</dimen>
+    <dimen name="dimen_60dp">60dp</dimen>
+    <dimen name="dimen_50dp">50dp</dimen>
+
+</resources>

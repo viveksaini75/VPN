@@ -102,7 +102,7 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.My
                 holder.serverCountry.setText("Brazil");
                 break;
             case "England":
-                holder.iv_flag.setImageResource(R.drawable.ic_flag_England);
+                holder.iv_flag.setImageResource(R.drawable.ic_flag_england);
                 holder.serverCountry.setText("England");
                 break;
             default:

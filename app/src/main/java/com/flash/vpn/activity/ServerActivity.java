@@ -1,5 +1,12 @@
 package com.flash.vpn.activity;
 
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -7,15 +14,6 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.os.Build;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -67,25 +65,22 @@ public class ServerActivity extends AppCompatActivity implements OnItemClickList
         mSwipeRefreshLayout = findViewById(R.id.swipeRefresh);
         mSwipeRefreshLayout.setColorScheme(R.color.blue,
                 R.color.green, R.color.orange, R.color.purple);
+        rvServerList = findViewById(R.id.serverListRv);
+        rvServerList.setHasFixedSize(true);
+        rvServerList.setLayoutManager(new LinearLayoutManager(this));
+
 
         StringGetConnectionURL = "https://raw.githubusercontent.com/Viveksaini9898/VPN/master/app/src/main/assets/filedetails.json";
 
         EncryptData En = new EncryptData();
         SharedPreferences AppValues = getSharedPreferences("app_values", 0);
-        String FileDetaile = En.decrypt(AppValues.getString("file_details", "NA"));
+        FileDetails = En.decrypt(AppValues.getString("file_details", "NA"));
 
-       /* if (FileDetaile.isEmpty()){
+        if (FileDetails.isEmpty()) {
             new Task().execute();
-        }else {
-
+        } else {
             loadServer();
-        }*/
-        new Task().execute();
-
-
-        rvServerList = findViewById(R.id.serverListRv);
-        rvServerList.setHasFixedSize(true);
-        rvServerList.setLayoutManager(new LinearLayoutManager(this));
+        }
 
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -110,7 +105,6 @@ public class ServerActivity extends AppCompatActivity implements OnItemClickList
             }
         });
     }
-
 
 
     private void fetchServer() {

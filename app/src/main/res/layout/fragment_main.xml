@@ -6,26 +6,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingBottom="5dp">
+        android:paddingLeft="@dimen/dimen_10dp"
+        android:paddingBottom="@dimen/dimen_5dp">
 
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="30dp"
-            app:cardCornerRadius="@dimen/lo_8dpGrid"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginLeft="@dimen/dimen_16dp"
+            android:layout_marginTop="@dimen/dimen_30dp"
+            app:cardCornerRadius="@dimen/dimen_8dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:layout_marginRight="@dimen/dimen_16dp"
             android:id="@+id/card">
 
             <LinearLayout
                 android:id="@+id/connectionStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/lo_10dpGrid"
+                android:padding="@dimen/dimen_10dp"
                 android:orientation="vertical">
 
 
@@ -33,7 +33,7 @@
                     android:id="@+id/durationTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
                     android:text="Duration: 00:00:00"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
@@ -51,7 +51,7 @@
                     android:id="@+id/byteInTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
                     android:text="Download: ↓0kB/s"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
@@ -60,7 +60,7 @@
                     android:id="@+id/byteOutTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
                     android:text="Upload: ↑0kB/s"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
@@ -77,25 +77,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/card"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="@dimen/dimen_30dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/lo_16dpGrid"
-                android:layout_marginEnd="@dimen/lo_16dpGrid"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:layout_marginEnd="@dimen/dimen_16dp"
                 android:background="@drawable/rectangle"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="@dimen/lo_16dpGrid">
+                android:padding="@dimen/dimen_16dp">
 
                 <TextView
                     android:id="@+id/connection"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:lineSpacingExtra="2dp"
+                    android:lineSpacingExtra="@dimen/dimen_2dp"
                     android:text="The connection is ready."
                     android:textColor="@color/colorWhite"
                     android:textSize="18sp" />
@@ -105,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:lineSpacingExtra="2dp"
+                    android:lineSpacingExtra="@dimen/dimen_2dp"
                     android:text="Tap CONNECT to start :)"
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp" />
@@ -115,7 +115,7 @@
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="@dimen/dimen_20dp"
                 android:orientation="horizontal">
 
                 <View
@@ -125,8 +125,8 @@
 
                 <View
                     android:id="@+id/view2"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="@dimen/dimen_60dp"
+                    android:layout_height="@dimen/dimen_60dp"
                     android:background="@drawable/triangle"
                     android:rotation="180" />
 
@@ -146,6 +146,8 @@
             android:layout_height="200dp"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
+            android:layout_below="@+id/ll_text_bubble"
+            android:layout_marginTop="@dimen/dimen_10dp"
             app:lottie_autoPlay="true"
             app:lottie_loop="true" />
 
@@ -215,15 +217,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_connect"
-            android:elevation="@dimen/lo_8dpGrid"
-            android:paddingStart="@dimen/lo_24dpGrid"
-            android:paddingEnd="@dimen/lo_24dpGrid"
+            android:elevation="@dimen/dimen_8dp"
+            android:paddingStart="@dimen/dimen_24dp"
+            android:paddingEnd="@dimen/dimen_24dp"
             android:text="Connect"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/ts_H6"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="30dp"/>
+            android:layout_marginBottom="@dimen/dimen_30dp"/>
 
     </RelativeLayout>
 </layout>

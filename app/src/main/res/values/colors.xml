@@ -75,6 +75,7 @@
     <color name="colorTextPrimary">#303030</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#000000</color>
+    <color name="lightBlue">#00D1FF</color>
 
 
 </resources>

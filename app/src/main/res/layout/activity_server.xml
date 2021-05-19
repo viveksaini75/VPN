@@ -11,7 +11,7 @@
        layout="@layout/server_tool_bar"/>
 
     <View
-        android:background="#ffffff"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:id="@+id/view"

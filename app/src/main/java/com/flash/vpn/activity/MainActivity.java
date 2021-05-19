@@ -1,5 +1,13 @@
 package com.flash.vpn.activity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,14 +17,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import com.flash.vpn.R;
 
@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         SharedPreferences ConnectionDetails = getSharedPreferences("connection_data", 0);
         image = ConnectionDetails.getString("country", "NA");
 
@@ -115,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             case "United States":
                 serverImage.setImageResource(R.drawable.ic_flag_united_states);
                 break;
-            case "unitedkingdom":
+            case "United Kingdom":
                 serverImage.setImageResource(R.drawable.ic_flag_united_kingdom);
                 break;
             case "Brazil":
@@ -158,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
                 serverImage.setImageResource(R.drawable.ic_flag_italy);
                 break;
             case "England":
-                serverImage.setImageResource(R.drawable.ic_flag_England);
+                serverImage.setImageResource(R.drawable.ic_flag_england);
                 break;
             default:
                 serverImage.setImageResource(R.drawable.ic_flag_unknown_mali);
