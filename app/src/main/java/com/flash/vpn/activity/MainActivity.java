@@ -157,6 +157,9 @@ public class MainActivity extends AppCompatActivity {
             case "italy":
                 serverImage.setImageResource(R.drawable.ic_flag_italy);
                 break;
+            case "England":
+                serverImage.setImageResource(R.drawable.ic_flag_England);
+                break;
             default:
                 serverImage.setImageResource(R.drawable.ic_flag_unknown_mali);
                 break;
