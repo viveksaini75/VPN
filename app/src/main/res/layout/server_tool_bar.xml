@@ -6,7 +6,7 @@
     android:layout_height="?attr/actionBarSize">
 
     <ImageView
-        android:layout_gravity="right"
+        android:layout_gravity="right|center_vertical"
         android:id="@+id/refresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,13 +20,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:gravity="center"
         android:textColor="@color/colorWhite"
         android:text="@string/server"
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <ImageView
-        android:layout_gravity="left"
+        android:layout_gravity="left|center_vertical"
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

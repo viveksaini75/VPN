@@ -14,7 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.flash.vpn.EncryptData;
 import com.flash.vpn.R;
 import com.flash.vpn.interfaces.OnItemClickListener;
 import com.flash.vpn.model.Server;
@@ -62,7 +61,7 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.My
                 holder.serverCountry.setText("Japan");
                 break;
             case "India":
-                holder.iv_flag.setImageResource(R.drawable.india);
+                holder.iv_flag.setImageResource(R.drawable.ic_flag_india);
                 holder.serverCountry.setText("India");
                 break;
             case "Russia":
@@ -86,7 +85,7 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.My
                 holder.serverCountry.setText("Canada");
                 break;
             case "China":
-                holder.iv_flag.setImageResource(R.drawable.ic_china);
+                holder.iv_flag.setImageResource(R.drawable.ic_flag_china);
                 holder.serverCountry.setText("China");
                 break;
             case "South Korea":

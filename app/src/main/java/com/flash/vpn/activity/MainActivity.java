@@ -5,8 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "FLASHVPN";
     private String image;
-    private ImageView serverImage;
-    private ImageButton navBar;
+    private ImageView serverImage,navBar;
+    private TextView settings , share;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -44,10 +44,13 @@ public class MainActivity extends AppCompatActivity {
 
         initializeAll();
 
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
+
+        transaction.add(R.id.container, fragment);
+        transaction.commit();
+
 
         navBar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,8 +67,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        transaction.add(R.id.container, fragment);
-        transaction.commit();
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ShareActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -73,8 +90,10 @@ public class MainActivity extends AppCompatActivity {
     private void initializeAll() {
         drawer = findViewById(R.id.drawer_layout);
         fragment = new MainFragment();
-        navBar = findViewById(R.id.navbar_right);
+        navBar = findViewById(R.id.imNavigationBar);
         serverImage = findViewById(R.id.server_image);
+        settings = findViewById(R.id.settings);
+        share = findViewById(R.id.share);
 
     }
 
@@ -105,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                 serverImage.setImageResource(R.drawable.ic_flag_south_korea);
                 break;
             case "India":
-                serverImage.setImageResource(R.drawable.india);
+                serverImage.setImageResource(R.drawable.ic_flag_india);
                 break;
             case "Thailand":
                 serverImage.setImageResource(R.drawable.ic_flag_thailand);
@@ -123,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                 serverImage.setImageResource(R.drawable.ic_flag_brazil);
                 break;
             case "China":
-                serverImage.setImageResource(R.drawable.ic_china);
+                serverImage.setImageResource(R.drawable.ic_flag_china);
                 break;
             case "Singapore":
                 serverImage.setImageResource(R.drawable.ic_flag_singapore);

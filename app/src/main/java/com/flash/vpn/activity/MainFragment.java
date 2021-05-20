@@ -67,9 +67,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
-    /**
-     * Initialize all variable and object
-     */
+
     private void initializeAll() {
         preference = new SharedPreference(getContext());
         server = preference.getServer();
@@ -100,7 +98,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.vpnBtn:
-                // Vpn is running, user would like to disconnect current connection.
+
                 if (vpnStart) {
                     confirmDisconnect();
                 } else {
@@ -112,9 +110,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    /**
-     * Show show disconnect confirm dialog
-     */
+
     public void confirmDisconnect() {
         RayanAlert alert = new RayanAlert(getContext());
         alert.setTitle("Disconnect")
@@ -177,9 +173,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         return false;
     }
 
-    /**
-     * Taking permission for network access
-     */
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -193,23 +187,16 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    /**
-     * Internet connection status.
-     */
+
     public boolean getInternetStatus() {
         return connection.netCheck(getContext());
     }
 
-    /**
-     * Get service status
-     */
     public void isServiceRunning() {
         setStatus(vpnService.getStatus());
     }
 
-    /**
-     * Start the VPN
-     */
+
     private void startVpn() {
         try {
             // .ovpn file
@@ -238,7 +225,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             br.readLine();
             OpenVpnApi.startVpn(getContext(), config, country, username, password);
 
-            // Update log
             binding.logTv.setText("Connecting...");
             vpnStart = true;
 
@@ -328,9 +314,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    /**
-     * Receive broadcast message
-     */
+
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {

@@ -16,12 +16,15 @@
         android:layout_height="match_parent" />
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view_right"
+        android:id="@+id/navigationBar"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/white"
         android:fitsSystemWindows="true">
 
+        <include
+            layout="@layout/navigation_list"/>
 
     </com.google.android.material.navigation.NavigationView>
 

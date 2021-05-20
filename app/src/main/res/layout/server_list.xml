@@ -17,10 +17,11 @@
 
         <ImageView
             android:id="@+id/iconImg"
-            android:layout_width="@dimen/dimen_50dp"
-            android:layout_height="@dimen/dimen_50dp"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
             android:layout_gravity="center"
             android:layout_marginRight="@dimen/dimen_20dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/ic_flag_unknown_mali" />
 
         <TextView

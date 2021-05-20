@@ -11,7 +11,7 @@ import static com.flash.vpn.Utils.getImgURL;
 
 public class SharedPreference {
 
-    private static final String APP_PREFS_NAME = "CakeVPNPreference";
+    private static final String APP_PREFS_NAME = "FlashVPNPreference";
 
     private SharedPreferences mPreference;
     private SharedPreferences.Editor mPrefEditor;
@@ -29,10 +29,7 @@ public class SharedPreference {
         this.context = context;
     }
 
-    /**
-     * Save server details
-     * @param server details of ovpn server
-     */
+
     public void saveServer(Server server){
         mPrefEditor.putString(SERVER_COUNTRY, server.getCountry());
         mPrefEditor.putString(SERVER_FLAG, server.getFlagUrl());
@@ -47,7 +44,7 @@ public class SharedPreference {
 
         Server server = new Server(
                 mPreference.getString(SERVER_COUNTRY,"Japan"),
-                mPreference.getString(SERVER_FLAG,getImgURL(R.drawable.japan)),
+                mPreference.getString(SERVER_FLAG,getImgURL(R.drawable.ic_flag_japan)),
                 mPreference.getString(SERVER_OVPN,"japan.ovpn"),
                 mPreference.getString(SERVER_OVPN_USER,"vpn"),
                 mPreference.getString(SERVER_OVPN_PASSWORD,"vpn")
