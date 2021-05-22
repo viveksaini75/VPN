@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
+                closeDrawer();
             }
         });
 
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ShareActivity.class);
                 startActivity(intent);
+                closeDrawer();
             }
         });
 
@@ -147,10 +149,10 @@ public class MainActivity extends AppCompatActivity {
             case "Singapore":
                 serverImage.setImageResource(R.drawable.ic_flag_singapore);
                 break;
-            case "france":
+            case "France":
                 serverImage.setImageResource(R.drawable.ic_flag_france);
                 break;
-            case "germany":
+            case "Germany":
                 serverImage.setImageResource(R.drawable.ic_flag_germany);
                 break;
             case "Canada":
@@ -159,22 +161,22 @@ public class MainActivity extends AppCompatActivity {
             case "Luxemburg":
                 serverImage.setImageResource(R.drawable.ic_flag_luxemburg);
                 break;
-            case "netherlands":
+            case "Netherlands":
                 serverImage.setImageResource(R.drawable.ic_flag_netherlands);
                 break;
-            case "spain":
+            case "Spain":
                 serverImage.setImageResource(R.drawable.ic_flag_spain);
                 break;
-            case "finland":
+            case "Finland":
                 serverImage.setImageResource(R.drawable.ic_flag_finland);
                 break;
-            case "poland":
+            case "Poland":
                 serverImage.setImageResource(R.drawable.ic_flag_poland);
                 break;
-            case "australia":
+            case "Australia":
                 serverImage.setImageResource(R.drawable.ic_flag_australia);
                 break;
-            case "italy":
+            case "Italy":
                 serverImage.setImageResource(R.drawable.ic_flag_italy);
                 break;
             case "England":

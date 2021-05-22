@@ -104,6 +104,14 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.My
                 holder.iv_flag.setImageResource(R.drawable.ic_flag_england);
                 holder.serverCountry.setText("England");
                 break;
+            case "Germany":
+                holder.iv_flag.setImageResource(R.drawable.ic_flag_germany);
+                holder.serverCountry.setText("Germany");
+                break;
+            case "Spain":
+                holder.iv_flag.setImageResource(R.drawable.ic_flag_spain);
+                holder.serverCountry.setText("Spain");
+                break;
             default:
                 holder.iv_flag.setImageResource(R.drawable.ic_flag_unknown_mali);
                 holder.serverCountry.setText("Unknown");

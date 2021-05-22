@@ -252,33 +252,33 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                     status("connected");
                     binding.logTv.setText("Please enjoy a safer internet");
                     binding.connection.setText("Connected " + country);
-                    binding.laAnimation.setAnimation(R.raw.ninjasecure);
+                    binding.laAnimation.setAnimation(R.raw.connected);
                     binding.laAnimation.playAnimation();
                     break;
                 case "WAIT":
                     binding.logTv.setText("waiting for server connection!!");
                     binding.connection.setText("Connecting " + country);
-                    binding.laAnimation.setAnimation(R.raw.boost);
-                    binding.laAnimation.playAnimation();
+                  /*  binding.laAnimation.setAnimation(R.raw.boost);
+                    binding.laAnimation.playAnimation();*/
 
                     break;
                 case "AUTH":
                     binding.logTv.setText("server authenticating!!");
                     binding.connection.setText("Connecting " + country);
-                    binding.laAnimation.setAnimation(R.raw.boost);
-                    binding.laAnimation.playAnimation();
+                   /* binding.laAnimation.setAnimation(R.raw.boost);
+                    binding.laAnimation.playAnimation();*/
                     break;
                 case "RECONNECTING":
                     status("connecting");
                     binding.logTv.setText("Reconnecting...");
                     binding.connection.setText("Connecting " + country);
-                    binding.laAnimation.setAnimation(R.raw.boost);
-                    binding.laAnimation.playAnimation();
+                   /* binding.laAnimation.setAnimation(R.raw.boost);
+                    binding.laAnimation.playAnimation()*/;
                     break;
                 case "NONETWORK":
                     binding.logTv.setText("No network connection");
-                    binding.laAnimation.setAnimation(R.raw.boost);
-                    binding.laAnimation.playAnimation();
+                   /* binding.laAnimation.setAnimation(R.raw.boost);
+                    binding.laAnimation.playAnimation();*/
                     break;
             }
 
@@ -292,8 +292,8 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         } else if (status.equals("connecting")) {
             binding.vpnBtn.setText(getContext().getString(R.string.connecting));
             binding.connection.setText("Connecting " + country);
-            binding.laAnimation.setAnimation(R.raw.boost);
-            binding.laAnimation.playAnimation();
+           /* binding.laAnimation.setAnimation(R.raw.boost);
+            binding.laAnimation.playAnimation();*/
         } else if (status.equals("connected")) {
             binding.vpnBtn.setText(getContext().getString(R.string.disconnect));
 

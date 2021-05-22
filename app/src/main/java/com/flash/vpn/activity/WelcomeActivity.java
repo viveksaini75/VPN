@@ -38,9 +38,6 @@ public class WelcomeActivity extends AppCompatActivity {
     SharedPreferences SharedAppDetails;
     int random;
 
-    @Override
-    public void onBackPressed() {
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -77,6 +74,11 @@ public class WelcomeActivity extends AppCompatActivity {
                     }
                 }, 2000);
 
+        }else {
+
+            Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }
 
     }
@@ -145,11 +147,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
 
                 if (Data.isConnectionDetails) {
-                    Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-
                     Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
