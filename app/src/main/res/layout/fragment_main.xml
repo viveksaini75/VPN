@@ -151,6 +151,20 @@
             app:lottie_autoPlay="true"
             app:lottie_loop="true" />
 
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_below="@id/la_animation"
+            android:progressDrawable="@drawable/round_corner"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginStart="@dimen/dimen_30dp"
+            android:layout_marginEnd="@dimen/dimen_30dp"
+            android:visibility="gone"
+
+            />
+
        <!-- <ImageView
             android:id="@+id/selectedServerIcon"
             android:layout_width="70dp"

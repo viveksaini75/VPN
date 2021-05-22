@@ -188,6 +188,7 @@ public class ServerActivity extends AppCompatActivity implements OnItemClickList
         Editor.putString("password", server.getOvpnUserPassword());
         Editor.apply();
         finish();
+
     }
 
     private class Task extends AsyncTask<String, Integer, Boolean> {

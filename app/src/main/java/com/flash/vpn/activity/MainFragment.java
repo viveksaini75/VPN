@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.VpnService;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.RemoteException;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,6 +55,9 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     private FragmentMainBinding binding;
     private InputStream inputStream;
     private String serverFile = "NULL", country = "NULL", username = "NULL", password = "NULL";
+    private int total;
+    private CountDownTimer mCountDown;
+    private long timePassed;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,6 +81,26 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         connection = new CheckInternetConnection();
         binding.laAnimation.setAnimation(R.raw.ninjasecure);
         binding.laAnimation.playAnimation();
+
+        binding.progressBar.setProgress(total);
+        int sec= 1 * 20 * 1000;
+        mCountDown = new CountDownTimer(sec,100) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                binding.progressBar.setVisibility(View.VISIBLE);
+                long finishedSeconds = sec - millisUntilFinished;
+                total = (int) (((float)finishedSeconds / (float)sec) * 100.0);
+                binding.progressBar.setProgress(total);
+
+            }
+
+            @Override
+            public void onFinish() {
+              binding.progressBar.setVisibility(View.GONE);
+              stopVpn();
+            }
+        };
+
 
     }
 
@@ -103,9 +127,12 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                     confirmDisconnect();
                 } else {
                     prepareVpn();
+                    mCountDown.start();
+
                 }
+
+
                 break;
-            //case R.id.browser:
 
         }
     }
@@ -140,7 +167,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
                 if (intent != null) {
                     startActivityForResult(intent, 1);
-                } else startVpn();//have already permission
+                } else startVpn();
 
                 // Update confection status
                 status("connecting");
@@ -245,6 +272,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                     binding.connection.setText("The connection is ready.");
                     binding.laAnimation.setAnimation(R.raw.ninjasecure);
                     binding.laAnimation.playAnimation();
+                    mCountDown.onFinish();
 
                     break;
                 case "CONNECTED":
@@ -252,8 +280,9 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                     status("connected");
                     binding.logTv.setText("Please enjoy a safer internet");
                     binding.connection.setText("Connected " + country);
-                    binding.laAnimation.setAnimation(R.raw.connected);
-                    binding.laAnimation.playAnimation();
+                    mCountDown.cancel();
+                    binding.progressBar.setVisibility(View.GONE);
+
                     break;
                 case "WAIT":
                     binding.logTv.setText("waiting for server connection!!");
@@ -292,8 +321,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         } else if (status.equals("connecting")) {
             binding.vpnBtn.setText(getContext().getString(R.string.connecting));
             binding.connection.setText("Connecting " + country);
-           /* binding.laAnimation.setAnimation(R.raw.boost);
-            binding.laAnimation.playAnimation();*/
+
         } else if (status.equals("connected")) {
             binding.vpnBtn.setText(getContext().getString(R.string.disconnect));
 
