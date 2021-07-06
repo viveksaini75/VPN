@@ -161,15 +161,7 @@
       "ip": "121.164.114.3"
 
     },
-    {
-      "country": "Germany",
-      "file": "client\nproto tcp-client\nremote 217.79.181.109 1311\nauth-user-pass\ndev tun\nresolv-retry infinite\nnobind\npersist-key\npersist-tun\nremote-cert-tls server\nauth SHA256\nauth-nocache\ncipher AES-128-GCM\ntls-client\ntls-version-min 1.2\ntls-cipher TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256\nignore-unknown-option block-outside-dns\nsetenv opt block-outside-dns \nverb 3\n<ca>\n-----BEGIN CERTIFICATE-----\nMIIBwDCCAWegAwIBAgIJALVcHN+hD+cwMAoGCCqGSM49BAMCMB4xHDAaBgNVBAMM\nE2NuX3lLUFJUc1lCM0FaRGhUMEQwHhcNMjEwNDIzMTcyMjMxWhcNMzEwNDIxMTcy\nMjMxWjAeMRwwGgYDVQQDDBNjbl95S1BSVHNZQjNBWkRoVDBEMFkwEwYHKoZIzj0C\nAQYIKoZIzj0DAQcDQgAE/7Y8WufQHHdjKnVisyfbhDV9V6qRd0CiDVrFGtKJSMi2\n1QZe1DVP3cr0yKIv3Qu5or/g4ggDV5U+YD88JABii6OBjTCBijAdBgNVHQ4EFgQU\nGRPicUmVmdGBl5Z692LeAvPgYxUwTgYDVR0jBEcwRYAUGRPicUmVmdGBl5Z692Le\nAvPgYxWhIqQgMB4xHDAaBgNVBAMME2NuX3lLUFJUc1lCM0FaRGhUMESCCQC1XBzf\noQ/nMDAMBgNVHRMEBTADAQH/MAsGA1UdDwQEAwIBBjAKBggqhkjOPQQDAgNHADBE\nAiA3/6I59+rOfyxAwFGyEZCCkQ4xk/pB12w1eNpmntbDiwIgFxZ8fD6J5dBKmABx\nuHbSny4DnYHr4qJPOr/33k54QkY=\n-----END CERTIFICATE-----\n</ca>\n<cert>\n-----BEGIN CERTIFICATE-----\nMIIBzjCCAXSgAwIBAgIQFugCOYJxCtu0TCgJm9r4hDAKBggqhkjOPQQDAjAeMRww\nGgYDVQQDDBNjbl95S1BSVHNZQjNBWkRoVDBEMB4XDTIxMDQyMzE3MjQ1MVoXDTIz\nMDcyNzE3MjQ1MVowEjEQMA4GA1UEAwwHVENQREVOVzBZMBMGByqGSM49AgEGCCqG\nSM49AwEHA0IABPIPiDhK0tZftL+yQeWlwWkoMsdseeLFVDvSISs+Rrm3fWj1Z9qt\nXHBfgrkNxnR+OYyjabRsElIodncGqtGd9qajgZ8wgZwwCQYDVR0TBAIwADAdBgNV\nHQ4EFgQUbf6qi9ugVTrgBmQORPDKMuLZLl0wTgYDVR0jBEcwRYAUGRPicUmVmdGB\nl5Z692LeAvPgYxWhIqQgMB4xHDAaBgNVBAMME2NuX3lLUFJUc1lCM0FaRGhUMESC\nCQC1XBzfoQ/nMDATBgNVHSUEDDAKBggrBgEFBQcDAjALBgNVHQ8EBAMCB4AwCgYI\nKoZIzj0EAwIDSAAwRQIgKO6UWGbQXQpYTn7l3mX3xUq4TdEHiCv+yxiRGwZzKxMC\nIQCfQARFzIjpbjLa0542oSWzCjO/C2BA+WK4Efo0AW0Tvg==\n-----END CERTIFICATE-----\n</cert>\n<key>\n-----BEGIN PRIVATE KEY-----\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgQ0EyZUpzGkJsxenM\n7qTU+gHpa849SoGDLbQqz3IrVE2hRANCAATyD4g4StLWX7S/skHlpcFpKDLHbHni\nxVQ70iErPka5t31o9WfarVxwX4K5DcZ0fjmMo2m0bBJSKHZ3BqrRnfam\n-----END PRIVATE KEY-----\n</key>\n<tls-crypt>\n#\n# 2048 bit OpenVPN static key\n#\n-----BEGIN OpenVPN Static key V1-----\n5834a54c1ac187d5d329ad80728a5580\n935f049aeb31ff5d53e1227c2d4744f3\nbe2ba7c8d3fc15bf39e46a46bbc16d6b\n032669e6d72882c17d902d6297dfe475\n492a9d716dca97a07cf72322c9c2d706\n2efb19f1569c69cc4559a997a6a72376\nb87dbc9e01346782626df6ac1a9c8846\n483e83e60e6693f5454587aa51811c5d\n0e06e0a1996840083f9c2430b8a34d08\n9e6cde2c53a9e73b9bc0ad1b63f1c7e8\ned0a485e481688f145061dc049913f82\n7fc070ae16c1145b0163e5fc7e8dc5e5\ndfdb0a75d54b61c978d65f4568fb5b4a\nbf51f0307d5f5989c6b7730c336dc269\n4f4242c9f1c29eafa93af29f0f42e7d6\ncc208af0513ec73b31826e8f9cdcb158\n-----END OpenVPN Static key V1-----\n</tls-crypt>\n",
-      "username": "tcpvpn.com-myvpn",
-      "password": "myvpn",
-      "location": "",
-      "ip": "217.79.181.109"
 
-    },
 
     {
       "country": "Viet Nam",
